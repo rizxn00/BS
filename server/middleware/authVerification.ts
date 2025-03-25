@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
+const JWT_SECRET_KEY: string = process.env.JWT_SECRET_KEY || 'b9b57eef405002f66c1c85e9013f46ddfb1c6143ac2aff551b846e7892f2827c';
+
 declare global {
   namespace Express {
     interface Request {
@@ -21,7 +23,7 @@ const verifyTokenMiddleware = async (req: Request, res: Response, next: NextFunc
         return;
     }
     try {
-        const decoded = jwt.verify(token, 'jwt-secret-key') as DecodedToken;
+        const decoded = jwt.verify(token, JWT_SECRET_KEY) as DecodedToken;
         req.user = decoded;
         next();
     } catch (error) {

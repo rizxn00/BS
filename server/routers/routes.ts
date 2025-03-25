@@ -46,11 +46,11 @@ router.post("/api/blog", verifyTokenMiddleware, async (req: Request, res: Respon
   await createBlog(req, res);
 });
 
-router.get("/api/blogs", async (req: Request, res: Response) => {
+router.get("/api/blogs", verifyTokenMiddleware, async (req: Request, res: Response) => {
   await getBlogs(req, res);
 });
 
-router.get("/api/blog/:id", async (req: Request, res: Response) => {
+router.get("/api/blog/:id", verifyTokenMiddleware, async (req: Request, res: Response) => {
   await getBlogById(req, res);
 });
 

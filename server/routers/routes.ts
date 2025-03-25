@@ -7,6 +7,15 @@ import { createBlog, getBlogs, getBlogById, updateBlog, deleteBlog } from "../co
 
 const router: Router = express.Router();
 
+
+router.post('/api/test/vercel', async (req: Request, res: Response) => {
+  try {
+    res.status(200).json({ message: "test success" });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // Auth Routes
 router.post('/api/auth/signup', async (req: Request, res: Response) => {
   await register(req, res);

@@ -9,12 +9,13 @@ dotenv.config();
 
 const app: Application = express();
 const PORT: number = parseInt(process.env.PORT || '8000', 10);
+const CORS_ORIGIN: string = process.env.CORS_ORIGIN || 'http://localhost:3000';
 
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: [CORS_ORIGIN],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })

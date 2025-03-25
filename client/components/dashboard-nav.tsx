@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/lib/auth-provider"
 import { LayoutDashboard, User, LogOut } from "lucide-react"
+import Image from "next/image"
 
 export function DashboardNav() {
   const pathname = usePathname()
@@ -14,7 +15,7 @@ export function DashboardNav() {
     <header className="border-b">
       <div className="flex h-16 items-center px-4 md:px-6">
         <Link href="/dashboard" className="font-bold">
-          BG
+          <Image src="/logo.svg" alt="logo" width={32} height={32}></Image>
         </Link>
         <nav className="ml-auto flex items-center gap-4">
           <Link href="/dashboard">

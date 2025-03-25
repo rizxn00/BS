@@ -13,8 +13,15 @@ export interface Blog {
   title: string
   content: string
   author: string
-  authorId: string
-  createdAt: string
-  updatedAt: string
+  authorId: Author
+  addedAt: string
+  modifiedAt: string
+}
+
+interface Author {
+  username: string,
+  email: string,
+  firstname: string,
+  lastname: string
 }
 

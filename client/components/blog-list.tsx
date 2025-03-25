@@ -27,18 +27,18 @@ export function BlogList() {
 
   if (loading) {
     return (
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {[...Array(6)].map((_, i) => (
-          <Card key={i} className="overflow-hidden">
-            <CardHeader className="pb-0">
-              <Skeleton className="h-5 w-1/2" />
-              <Skeleton className="h-4 w-3/4" />
+          <Card key={i} className="overflow-hidden shadow-md animate-pulse">
+            <CardHeader className="pb-2">
+              <Skeleton className="h-6 w-3/5" />
+              <Skeleton className="h-5 w-2/3 mt-2" />
             </CardHeader>
             <CardContent className="py-4">
-              <Skeleton className="h-20 w-full" />
+              <Skeleton className="h-24 w-full" />
             </CardContent>
             <CardFooter>
-              <Skeleton className="h-4 w-1/3" />
+              <Skeleton className="h-5 w-1/4" />
             </CardFooter>
           </Card>
         ))}
@@ -48,32 +48,29 @@ export function BlogList() {
 
   if (blogs.length === 0) {
     return (
-      <div className="flex h-[400px] items-center justify-center rounded-md border border-dashed">
-        <div className="text-center">
-          <h3 className="text-lg font-medium">No blogs found</h3>
-          <p className="text-muted-foreground">Get started by creating a new blog.</p>
-        </div>
+      <div className="flex h-[400px] flex-col items-center justify-center rounded-md border border-dashed">
+        <h3 className="text-lg font-semibold">No blogs found</h3>
+        <p className="text-muted-foreground">Start by creating a new blog.</p>
       </div>
     )
   }
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {blogs.map((blog) => (
-        <Card key={blog._id} className="overflow-hidden">
+        <Card key={blog._id} className="overflow-hidden shadow-lg transition-transform hover:scale-[1.02] hover:shadow-xl">
           <CardHeader>
-            <CardTitle>{blog.title}</CardTitle>
-            <CardDescription>By {blog.author}</CardDescription>
+            <CardTitle className="truncate">{blog.title}</CardTitle>
+            <CardDescription className="text-sm">By {blog.authorId.username}</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="line-clamp-3">{blog.content}</p>
+            <p className="line-clamp-3 text-gray-600">{blog.content}</p>
           </CardContent>
           <CardFooter>
-            <p className="text-sm text-muted-foreground">{new Date(blog.createdAt).toLocaleDateString()}</p>
+            <p className="text-xs text-muted-foreground">{new Date(blog.addedAt).toLocaleDateString()}</p>
           </CardFooter>
         </Card>
       ))}
     </div>
   )
 }
-

@@ -8,7 +8,7 @@ import { createBlog, getBlogs, getBlogById, updateBlog, deleteBlog } from "../co
 const router: Router = express.Router();
 
 
-router.post('/api/test/vercel', async (req: Request, res: Response) => {
+router.get('/api/test/vercel', async (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "test success" });
   } catch (error) {

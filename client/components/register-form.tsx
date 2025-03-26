@@ -32,11 +32,6 @@ export function RegisterForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!agreeTerms) {
-      toast.error("Please agree to the terms and conditions")
-      return
-    }
-
     if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match")
       return

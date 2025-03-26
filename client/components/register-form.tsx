@@ -13,7 +13,6 @@ import { Checkbox } from "./ui/checkbox"
 
 export function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false)
-  const [agreeTerms] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -134,17 +133,7 @@ export function RegisterForm() {
         />
       </div>
       
-      <div className="flex items-center space-x-2">
-        <Checkbox id="terms" />
-        <Label htmlFor="terms" className="text-sm font-medium">
-          I agree to the{" "}
-          <Link href="/terms" className="text-primary underline">
-            terms and conditions
-          </Link>
-        </Label>
-      </div>
-      
-      <Button type="submit" className="w-full" disabled={isLoading || !agreeTerms}>
+      <Button type="submit" className="w-full" disabled={isLoading}>
         {isLoading ? "Creating account..." : "Create account"}
       </Button>
     </form>
